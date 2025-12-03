@@ -89,7 +89,7 @@ func can_move_to_grid(grid_pos: Vector2) -> bool:
 
 func game_over():
 	print("Game Over!")
-	emit_signal("game_over_signal", "Rock reached the end!")
+	emit_signal("game_over_signal")
 
 
 
