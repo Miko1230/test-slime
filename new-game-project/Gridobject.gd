@@ -8,11 +8,6 @@ var is_moving: bool = false
 @onready var area_2d: Area2D = $Area2D
 func _ready():
 	snap_to_grid()
-	if area_2d:
-		area_2d.area_entered.connect(_on_area_entered)
-func _on_area_entered(area: Area2D):
-
-	pass
 func snap_to_grid():
 	var current_grid_pos = world_to_grid(position)
 	target_grid_position = current_grid_pos

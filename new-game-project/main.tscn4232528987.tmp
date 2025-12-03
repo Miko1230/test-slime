@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://cqow47bch5ocs"]
+[gd_scene load_steps=20 format=4 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bthh01atpdbk1" path="res://slime.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://m30q8go3xrel" path="res://All Tiles Free Ver..png" id="2_dg77c"]
 [ext_resource type="Script" uid="uid://b2axo475gjhlv" path="res://slime.gd" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://cdfq78pjx7wo4" path="res://rock.gd" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://csl1lylwe6x1m" path="res://rock.png" id="4_lquwl"]
@@ -12,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://8j3pwy0a26yl" path="res://puddle.png" id="9_kek77"]
 [ext_resource type="Script" uid="uid://cf7e4pnv1p4ot" path="res://Gridobject.gd" id="11_efxa6"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycdy4"]
+texture = ExtResource("2_dg77c")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w48qg"]
 texture = ExtResource("5_lquwl")
 texture_region_size = Vector2i(100, 100)
@@ -19,7 +25,7 @@ texture_region_size = Vector2i(100, 100)
 0:0/0/custom_data_0 = true
 1:0/0 = 0
 1:0/0/custom_data_0 = true
-0:1/next_alternative_id = 3
+0:1/next_alternative_id = 2
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
 0:1/0/custom_data_0 = true
@@ -33,6 +39,7 @@ physics_layer_0/collision_layer = 128
 physics_layer_0/collision_mask = 255
 custom_data_layer_0/name = "Passable"
 custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ycdy4")
 sources/1 = SubResource("TileSetAtlasSource_w48qg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]

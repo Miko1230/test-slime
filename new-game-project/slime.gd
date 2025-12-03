@@ -35,7 +35,6 @@ func _process(_delta):
 	
 	if direction != Vector2.ZERO:
 		try_move(direction)
-
 func try_move(direction: Vector2):
 	var new_grid_pos = target_grid_position + direction
 	
@@ -49,11 +48,15 @@ func try_move(direction: Vector2):
 	else:
 		
 		if can_move_to_grid(new_grid_pos):
+			if(TileData.get_custom_data_by_layer_id(layer.id:1)==true):
+				
 			complete_player_move(direction)
+		else: 
+			print("sciana")
 
 func complete_player_move(direction: Vector2):
 	
-	current_hp -= 1
+	#current_hp -= 1
 	print("HP: ", current_hp, "/", max_hp)
 	
 	if current_hp <= 0:
