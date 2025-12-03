@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=4 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bthh01atpdbk1" path="res://slime.png" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://b2axo475gjhlv" path="res://slime.gd" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://cdfq78pjx7wo4" path="res://rock.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://csl1lylwe6x1m" path="res://rock.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bhdcpqnxupjs0" path="res://TX Tileset Grass.png" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://kd47pcd0j7ln" path="res://End.png" id="6_272bh"]
+[ext_resource type="Script" uid="uid://c07oykl4hs1nq" path="res://end.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://bpk6w82saoctm" path="res://puddle.gd" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://8j3pwy0a26yl" path="res://puddle.png" id="9_kek77"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+texture = ExtResource("5_lquwl")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_272bh"]
+tile_size = Vector2i(100, 100)
+sources/1 = SubResource("TileSetAtlasSource_lquwl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(100, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(100, 100.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(101, 99)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5vw27")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAEAAQABAAAAAAADAAAAAQABAAAAAAABAAMAAQABAAAAAAADAAQAAQAAAAAAAAABAAUAAQABAAAAAAAAAAIAAQABAAAAAAAAAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAEAAQABAAAAAAACAAIAAQABAAAAAAADAAMAAQABAAAAAAACAAQAAQABAAAAAAADAAUAAQABAAAAAAAAAAQAAQABAAAAAAACAAUAAQAAAAAAAAACAAMAAQABAAAAAAACAAEAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAIAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAEAAAAAQABAAAAAAAFAAEAAQABAAAAAAAEAAIAAQABAAAAAAAFAAMAAQABAAAAAAAEAAQAAQABAAAAAAAFAAUAAQABAAAAAAADAAIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_272bh")
+
+[node name="Slime" type="CharacterBody2D" parent="."]
+collision_mask = 31
+script = ExtResource("2_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slime"]
+position = Vector2(50, 52)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Slime"]
+z_index = 2
+position = Vector2(50, 52)
+texture = ExtResource("2_1bvp3")
+
+[node name="Camera2D" type="Camera2D" parent="Slime"]
+position = Vector2(50, 52)
+
+[node name="End" type="Area2D" parent="."]
+position = Vector2(36, 20)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("7_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+position = Vector2(614, 30)
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="End"]
+position = Vector2(614, 30)
+texture = ExtResource("6_272bh")
+
+[node name="Puddle" type="Area2D" parent="."]
+collision_layer = 16
+script = ExtResource("9_4c57u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Puddle"]
+position = Vector2(50, 650)
+texture = ExtResource("9_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puddle"]
+position = Vector2(50, 650)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="Rock" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rock"]
+z_index = 1
+position = Vector2(50, 52)
+texture = ExtResource("4_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock"]
+position = Vector2(50, 52)
+shape = SubResource("RectangleShape2D_7mycd")
